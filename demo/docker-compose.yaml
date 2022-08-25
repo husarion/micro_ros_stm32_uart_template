@@ -1,0 +1,16 @@
+# Quick setup
+# docker compose up
+
+services:
+  talker:
+    image: microros/micro-ros-agent:humble
+    command: serial -D /dev/ttyAMA0  serial -b 576000 # -v6
+    volumes:
+      - /dev
+    devices:
+      - /dev/ttyAMA0
+    privileged: true
+
+  listener:
+    image: osrf/ros:humble-desktop
+    command: ros2 run demo_nodes_cpp listener
