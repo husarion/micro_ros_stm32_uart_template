@@ -22,7 +22,10 @@ static rcl_timer_t timer;
 constexpr uint64_t SERIAL_BAUDRATE = 576000;
 constexpr uint64_t FREQUENCY = 10;
 
-static UARTSerial uros_serial(PA_9, PA_10);
+static UARTSerial uros_serial(RPI_SERIAL_TX, RPI_SERIAL_RX);
+static DigitalOut led1(LED1);
+static DigitalOut led2(LED2);
+static DigitalOut led3(LED3);
 
 #define RCCHECK(fn)                    \
     {                                  \
@@ -40,13 +43,17 @@ static UARTSerial uros_serial(PA_9, PA_10);
 
 void error_loop() {
     while (1) {
-        // error
+        led1 = !led1;
+        led2 = !led2;
+        led3 = !led3;
+        ThisThread::sleep_for(300);
     }
 }
 
 void timer_callback(rcl_timer_t *timer, int64_t last_call_time) {
     RCLC_UNUSED(last_call_time);
     if (timer != NULL) {
+        led2 = !led2;
         RCSOFTCHECK(rcl_publish(&publisher, &msg, NULL));
     }
 }
@@ -114,6 +121,7 @@ void handle_string() {
         msg.data = micro_ros_string_utilities_set(msg.data, buffer);
         ThisThread::sleep_for(1000);
         ++i;
+        led1 = !led1;
     }
 }
 int main() {
