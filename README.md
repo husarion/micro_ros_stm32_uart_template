@@ -1,8 +1,9 @@
 # micro_ros_stm32_uart_template
 Talker-listener demo with Micro-ROS, STM32F4 and mbed framework over UART transport.
 
-**[STM32 (Core2)](https://husarion.com/manuals/core2/) + [micro-ROS](https://micro.ros.org/) + [mBed](https://os.mbed.com/) + [PlatformIO](https://platformio.org/)**
+**STM32 + [micro-ROS](https://micro.ros.org/) + [mBed](https://os.mbed.com/) + [PlatformIO](https://platformio.org/)**
 
+You can also check [example](https://github.com/husarion/micro_ros_stm32_uart_template/tree/core2) with our [STM32 (Core2)](https://husarion.com/manuals/core2/).
 ## Flashing STM32
 
 Click **[Use this template](https://github.com/husarion/micro_ros_stm32_uart_template/generate)** button, and clone your own copy of this repo.
